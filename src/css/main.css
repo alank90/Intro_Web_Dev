@@ -1,24 +1,84 @@
-body {
-    background-image: 
+html {
+    height: 100%;
+    background: 
         linear-gradient(
             rgba(245, 197, 197, 0.719), rgba(240, 40, 5, 0.911)
-        )
+        );
+    background-size: cover;
 }
 
-h1, h2{
+
+body {
+    font-size:62.5%;
+}
+
+h1{
     text-align: center;
+    font-size: 2rem;
 }
 
 .container {
-    text-align: center;
-    font-size: 24px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    font-size: 2.4trem;
 }
 
+h2 {
+    flex-basis: 100%;
+    font-size: 1.5rem;
+    margin-bottom: -10px;
+}
+     
+a:link
+{
+    color: rgba(15, 14, 14, 0.8);
+    text-decoration: none;
+    font-size: 1.3rem;
+    position: relative;   /* Underline Effect */
+}
+    a:link:after {   /* Underline Effect */
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #2e0801;
+        transform-origin: bottom right;
+        transition: transform 0.4s ease-out;
+    }
+
+a:visited
+{
+    color: purple;
+    font-style: italic;
+}
+a:hover
+{
+    font-weight: bold;
+}
+    a:hover:after {    /* Underline Effect */
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+a:active
+{
+    color: #000000;
+    font-variant: small-caps;
+}
 img {
     width: 100%;
-    max-width: 400px;
+    margin: 0 auto;
+    max-width: 300px;
     height: auto;
 }   
+    .center {
+        display: block;
+        margin: 0 auto;
+    }
 
 p {
     font-size: 22px;

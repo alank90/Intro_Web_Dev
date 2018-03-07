@@ -1,4 +1,4 @@
-// DOM is ready
+/* // DOM is ready
 $(document).ready(function () {
     let moreLink = document.createElement("a");
     let lessLink = document.createElement("a");
@@ -59,4 +59,4 @@ $(document).ready(function () {
     });
 
 
-}); // end dom ready
+}); // end dom ready */
