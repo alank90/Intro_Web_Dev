@@ -1,16 +1,8 @@
-# Browserify with Budo
-Ok so this is the first in a series of git repos that I've created to use as templates for Rapid Prototyping (or rapo) using [Browserify](http://browserify.org) and [Budo](https://github.com/mattdesl/budo).
-
-There's a lot (and I mean a whole lot) of tools out there for Rapid Prototyping (again Rapo) that give you this functionality but I think these two (Browserify and Budo) really put the Rapid into Rapid Prototyping - IMHO.
-
-Also, most projects that I look at talk about Webpack, Gulp, Grunt and the like. I think these are more than just Rapo. They require a good deal more to get started. The rapo projects I'm putting together, require a super small amount of configuration and stuff.
+# Intro to Web Development Home Page
+Companion to class.
 
 ## What's in this project
-This is a barebones Browserify and Budo project. The idea is the build all other projects using this as the basic setup.
-
-The only JavaScript for web library I've used is - which I've used because I want to not use `jQuery` or any such other library to check if the DOM is ready at the start.
-
-*Don't get me wrong. I have quite enjoyed using `jQuery` over the years. It has contributed to where the web is at more than maybe any other single JavaScript library. But it's probably done it time.*
+Links and additional references to material in the course.
 
 ### index.js
 This will be used by budo to start up things.
@@ -18,13 +10,6 @@ This will be used by budo to start up things.
 You'll include all your JS libs here
 
 Look at the `start` script in the `package.json`
-
-### JS Libs:
-#### domready
-So if you don't want to use jQuery, then [`domready`](https://www.npmjs.com/package/domready) is a very convenient (obvious) alternative.
-
-#### jQuery
-Of course, if you want to use [jQuery](https://www.npmjs.com/package/jquery), then the require is easy-peasy. 
 
 ### index.html
 Has references to `main.css` and (**importantly**) `index.js`.
