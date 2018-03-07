@@ -1,5 +1,8 @@
 body {
-    background-color: rgba(176, 227, 243, 0.555);
+    background-image: 
+        linear-gradient(
+            rgba(245, 197, 197, 0.719), rgba(240, 40, 5, 0.911)
+        )
 }
 
 h1, h2{
@@ -14,6 +17,7 @@ h1, h2{
 img {
     width: 100%;
     max-width: 400px;
+    height: auto;
 }   
 
 p {
