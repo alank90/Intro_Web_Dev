@@ -132,11 +132,11 @@ p {
             visibility: hidden;
             opacity: 0;
         }
-          .overlay:target {
+        .overlay:target {
             visibility: visible;
             opacity: 1;
             z-index: 99;
-          }
+        }
 
 .popup {
             margin: 70px auto;
