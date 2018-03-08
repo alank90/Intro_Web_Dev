@@ -4,9 +4,8 @@ html {
     background-size: cover;
 }
 
-
 body {
-    font-size:62.5%;
+    font-size: 62.5%;
     cursor: default;
 }
 
@@ -31,42 +30,45 @@ h2 {
     font-size: 2rem;
     margin-bottom: -10px;
 }
-     
-a:link
-{
+
+a:link {
     color: rgba(15, 14, 14, 0.8);
     text-decoration: none;
     font-size: 1.3rem;
-    position: relative;   /* Underline Effect */
+    position: relative;
+    /* Underline Effect */
 }
-    a:link:after {   /* Underline Effect */
-        content: '';
-        position: absolute;
-        width: 100%;
-        transform: scaleX(0);
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        background-color: #f5ececda;
-        transform-origin: bottom right;
-        transition: transform 0.4s ease-out;
-    }
 
-a:visited
-{
+a:link:after {
+    /* Underline Effect */
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f5ececda;
+    transform-origin: bottom right;
+    transition: transform 0.4s ease-out;
+}
+
+a:visited {
     color: purple;
     font-style: italic;
 }
-a:hover
-{
+
+a:hover {
     font-weight: bold;
 }
-    a:hover:after {    /* Underline Effect */
-        transform: scaleX(1);
-        transform-origin: bottom left;
-    }
-a:active
-{
+
+a:hover:after {
+    /* Underline Effect */
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+a:active {
     color: #000000;
     font-variant: small-caps;
 }
@@ -77,16 +79,17 @@ img {
     max-width: 300px;
     height: auto;
     border-radius: 35px;
-}   
-    .center {
-        display: block;
-        margin: 0 auto;
-    }
+}
+
+.center {
+    display: block;
+    margin: 0 auto;
+}
 
 p {
     font-size: 22px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: left; 
+    text-align: left;
 }
 
 .more-link {
