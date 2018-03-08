@@ -1,6 +1,8 @@
 html {
     height: 100%;
     background-image: url("/src/img/just_code.jpg");
+    background-color: whitesmoke;
+    background-blend-mode: hard-light;
     background-size: cover;
 }
 
@@ -29,6 +31,14 @@ h2 {
     font-family: 'Nanum Brush Script', cursive;
     font-size: 2rem;
     margin-bottom: -10px;
+    text-decoration-line: underline;
+}
+
+li {
+    font-size: 1.3rem;
+}
+li li {
+    font-size: 1rem;
 }
 
 a:link {
@@ -39,7 +49,7 @@ a:link {
     /* Underline Effect */
 }
 
-a:link:after {
+    a:link:after {
     /* Underline Effect */
     content: '';
     position: absolute;
@@ -62,11 +72,11 @@ a:hover {
     font-weight: bold;
 }
 
-a:hover:after {
-    /* Underline Effect */
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
+    a:hover:after {
+        /* Underline Effect */
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
 
 a:active {
     color: #000000;
@@ -83,7 +93,7 @@ img {
 
 .center {
     display: block;
-    margin: 0 auto;
+    margin: -30px auto;
 }
 
 p {
@@ -92,12 +102,3 @@ p {
     text-align: left;
 }
 
-.more-link {
-    display: inline-block;
-    margin-left: 10px;
-}
-
-.less-link {
-    display: inline-block;
-    margin-left: 10px;
-}
