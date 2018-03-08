@@ -1,21 +1,20 @@
 html {
     height: 100%;
-    background: 
-        linear-gradient(
-            rgba(245, 197, 197, 0.719), rgba(240, 40, 5, 0.911)
-        );
+    background-image: url("/src/img/just_code.jpg");
     background-size: cover;
 }
 
 
 body {
     font-size:62.5%;
+    cursor: default;
 }
 
 h1 {
     font-family: 'Fontdiner Swanky', cursive;
     text-align: center;
     font-size: 2.5rem;
+    cursor: default;
 }
 
 .container {
@@ -48,7 +47,7 @@ a:link
         height: 2px;
         bottom: 0;
         left: 0;
-        background-color: #2e0801;
+        background-color: #f5ececda;
         transform-origin: bottom right;
         transition: transform 0.4s ease-out;
     }
@@ -71,11 +70,13 @@ a:active
     color: #000000;
     font-variant: small-caps;
 }
+
 img {
     width: 100%;
     margin: 0 auto;
     max-width: 300px;
     height: auto;
+    border-radius: 35px;
 }   
     .center {
         display: block;
