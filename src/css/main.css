@@ -131,8 +131,7 @@ p {
             transition: opacity 500ms;
             visibility: hidden;
             opacity: 0;
-            height: 100vh
-          }
+        }
           .overlay:target {
             visibility: visible;
             opacity: 1;
