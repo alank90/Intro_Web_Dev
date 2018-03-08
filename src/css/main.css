@@ -135,6 +135,7 @@ p {
           .overlay:target {
             visibility: visible;
             opacity: 1;
+            z-index: 99;
           }
 
 .popup {
