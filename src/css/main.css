@@ -102,3 +102,84 @@ p {
     text-align: left;
 }
 
+/* Code for Modal Window Below Here */
+.button {
+    display: block;
+    width: 25%;
+    font-size: 1rem;
+    margin: 7px;
+    padding: 5px;
+    color: #fff;
+    border: 2px solid rgb(97, 22, 3);
+    border-radius: 20px/50px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+  }
+        .button:hover {
+            background: rgba(241, 50, 50, .2);
+        }
+
+.overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+            height: 100vh
+          }
+          .overlay:target {
+            visibility: visible;
+            opacity: 1;
+          }
+
+.popup {
+            margin: 70px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 60%;
+            position: relative;
+            max-height: 100%;
+            overflow-y: auto;
+            transition: all 3s ease-in-out;
+          }
+          
+        .popup h2 {
+            margin-top: 0;
+            color: #333;
+            font-family: Tahoma, Arial, sans-serif;
+          }
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+          }
+            .popup .close:hover {
+            color: rgba(235, 15, 15, 0.925);
+          }
+            .popup .content {
+                max-height: 30%;
+            }
+          
+          @media screen and (max-width: 700px){
+            .box{
+              width: 70%;
+            }
+            .popup{
+              width: 70%;
+            }
+          }
+
+ 
+
