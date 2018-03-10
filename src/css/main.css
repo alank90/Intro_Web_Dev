@@ -1,37 +1,39 @@
 html {
-  height: 100%;
-  background-image: url("/src/img/background.png");
-  background-color: whitesmoke;
   background-blend-mode: hard-light;
+  background-color: whitesmoke;
+  background-image: url("/src/img/background.png");
   background-size: cover;
+  height: 100%;
 }
 
 body {
+    cursor: default;
   font-size: 62.5%;
-  cursor: default;
+  
 }
 
 h1 {
-  font-family: "Fontdiner Swanky", cursive;
-  text-align: center;
-  font-size: 2.5rem;
   cursor: default;
+  font-family: "Fontdiner Swanky", cursive;
+  font-size: 2.5rem;
+  text-align: center;
 }
 
 .container {
+  align-items: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: flex-start;
   font-size: 2.4rem;
 }
 
 h2 {
+  -webkit-text-decoration-line: underline;
   flex-basis: 100%;
   font-family: "Nanum Brush Script", cursive;
   font-size: 2rem;
   margin-bottom: -10px;
-  text-decoration-line: underline;
+          text-decoration-line: underline;
 }
 
 li {
@@ -43,24 +45,28 @@ li li {
 
 a:link {
   color: rgba(15, 14, 14, 0.8);
-  text-decoration: none;
   font-size: 1.3rem;
   position: relative;
+  text-decoration: none;
   /* Underline Effect */
 }
 
 a:link:after {
+  -webkit-transform: scaleX(0);
+  -webkit-transform-origin: bottom right;
+  background-color: #f5ececda;
+  bottom: 0;
   /* Underline Effect */
   content: "";
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
   height: 2px;
-  bottom: 0;
   left: 0;
-  background-color: #f5ececda;
-  transform-origin: bottom right;
+  position: absolute;
+          transform: scaleX(0);
+          transform-origin: bottom right;
+  transition: -webkit-transform 0.4s ease-out;
   transition: transform 0.4s ease-out;
+  transition: transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
+  width: 100%;
 }
 
 a:visited {
@@ -74,8 +80,10 @@ a:hover {
 
 a:hover:after {
   /* Underline Effect */
-  transform: scaleX(1);
-  transform-origin: bottom left;
+  -webkit-transform: scaleX(1);
+  -webkit-transform-origin: bottom left;
+          transform: scaleX(1);
+          transform-origin: bottom left;
 }
 
 a:active {
@@ -84,11 +92,11 @@ a:active {
 }
 
 img {
-  width: 100%;
+  border-radius: 35px;
+  height: auto;
   margin: 0 auto;
   max-width: 300px;
-  height: auto;
-  border-radius: 35px;
+  width: 100%;
 }
 
 .center {
@@ -97,73 +105,73 @@ img {
 }
 
 p {
-  font-size: 22px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 22px;
   text-align: left;
 }
 
 /* Code for Modal Window Below Here */
 .button {
+  border: 2px solid rgb(97, 22, 0.3);
+  border-radius: 20px/50px;
+  color: #fff;
+  cursor: pointer;
   display: block;
-  width: 40%;
   font-size: 1rem;
   margin: 7px;
   padding: 5px;
-  color: #fff;
-  border: 2px solid rgb(97, 22, 0.3);
-  border-radius: 20px/50px;
   text-align: center;
   text-decoration: none;
-  cursor: pointer;
   transition: all 0.3s ease-out;
+  width: 40%;
 }
 .button:hover {
   background: rgba(240, 218, 218, 0.2);
 }
 
 .overlay {
-  position: fixed;
-  top: 0;
+  background: rgba(0, 0, 0, 0.7);
   bottom: 0;
   left: 0;
+  opacity: 0;
+  position: fixed;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
+  top: 0;
   transition: opacity 500ms;
   visibility: hidden;
-  opacity: 0;
 }
 .overlay:target {
-  visibility: visible;
   opacity: 1;
+  visibility: visible;
   z-index: 99;
 }
 
 .popup {
-  margin: 70px auto;
-  padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 60%;
-  position: relative;
+  margin: 70px auto;
   max-height: 100%;
   overflow-y: auto;
+  padding: 20px;
+  position: relative;
   transition: all 3s ease-in-out;
+  width: 60%;
 }
 
 .popup h2 {
-  margin-top: 0;
   color: #333;
   font-family: Tahoma, Arial, sans-serif;
+  margin-top: 0;
 }
 .popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
+  color: #333;
   font-size: 30px;
   font-weight: bold;
+  position: absolute;
+  right: 30px;
   text-decoration: none;
-  color: #333;
+  top: 20px;
+  transition: all 200ms;
 }
 .popup .close:hover {
   color: rgba(235, 15, 15, 0.925);
@@ -183,31 +191,64 @@ p {
 
 /* Image Hover Shake Rulesets */
 img:hover {
-  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
+  -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  -webkit-transform: translate3d(0, 0, 0);
+          animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+          backface-visibility: hidden;
+          perspective: 1000px;
+          transform: translate3d(0, 0, 0);
 }
-@keyframes shake {
+@-webkit-keyframes shake {
   10%,
   90% {
-    transform: translate3d(-1px, 0, 0);
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
   }
 
   20%,
   80% {
-    transform: translate3d(2px, 0, 0);
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
   }
 
   30%,
   50%,
   70% {
-    transform: translate3d(-4px, 0, 0);
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
   }
 
   40%,
   60% {
-    transform: translate3d(4px, 0, 0);
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
   }
 }
+@keyframes shake {
+  10%,
+  90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
 
+  20%,
+  80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+}
