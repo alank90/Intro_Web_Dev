@@ -1,185 +1,213 @@
 html {
-    height: 100%;
-    background-image: url("/src/img/just_code.jpg");
-    background-color: whitesmoke;
-    background-blend-mode: hard-light;
-    background-size: cover;
+  height: 100%;
+  background-image: url("/src/img/background.png");
+  background-color: whitesmoke;
+  background-blend-mode: hard-light;
+  background-size: cover;
 }
 
 body {
-    font-size: 62.5%;
-    cursor: default;
+  font-size: 62.5%;
+  cursor: default;
 }
 
 h1 {
-    font-family: 'Fontdiner Swanky', cursive;
-    text-align: center;
-    font-size: 2.5rem;
-    cursor: default;
+  font-family: "Fontdiner Swanky", cursive;
+  text-align: center;
+  font-size: 2.5rem;
+  cursor: default;
 }
 
 .container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    font-size: 2.4trem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  font-size: 2.4trem;
 }
 
 h2 {
-    flex-basis: 100%;
-    font-family: 'Nanum Brush Script', cursive;
-    font-size: 2rem;
-    margin-bottom: -10px;
-    text-decoration-line: underline;
+  flex-basis: 100%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: 2rem;
+  margin-bottom: -10px;
+  text-decoration-line: underline;
 }
 
 li {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 li li {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 a:link {
-    color: rgba(15, 14, 14, 0.8);
-    text-decoration: none;
-    font-size: 1.3rem;
-    position: relative;
-    /* Underline Effect */
+  color: rgba(15, 14, 14, 0.8);
+  text-decoration: none;
+  font-size: 1.3rem;
+  position: relative;
+  /* Underline Effect */
 }
 
-    a:link:after {
-    /* Underline Effect */
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #f5ececda;
-    transform-origin: bottom right;
-    transition: transform 0.4s ease-out;
+a:link:after {
+  /* Underline Effect */
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f5ececda;
+  transform-origin: bottom right;
+  transition: transform 0.4s ease-out;
 }
 
 a:visited {
-    color: purple;
-    font-style: italic;
+  color: purple;
+  font-style: italic;
 }
 
 a:hover {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-    a:hover:after {
-        /* Underline Effect */
-        transform: scaleX(1);
-        transform-origin: bottom left;
-    }
+a:hover:after {
+  /* Underline Effect */
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
 
 a:active {
-    color: #000000;
-    font-variant: small-caps;
+  color: #000000;
+  font-variant: small-caps;
 }
 
 img {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 300px;
-    height: auto;
-    border-radius: 35px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 300px;
+  height: auto;
+  border-radius: 35px;
 }
 
 .center {
-    display: block;
-    margin: -30px auto;
+  display: block;
+  margin: -30px auto;
 }
 
 p {
-    font-size: 22px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: left;
+  font-size: 22px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: left;
 }
 
 /* Code for Modal Window Below Here */
 .button {
-    display: block;
-    width: 25%;
-    font-size: 1rem;
-    margin: 7px;
-    padding: 5px;
-    color: #fff;
-    border: 2px solid rgb(97, 22, 3);
-    border-radius: 20px/50px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-  }
-        .button:hover {
-            background: rgba(241, 50, 50, .2);
-        }
+  display: block;
+  width: 40%;
+  font-size: 1rem;
+  margin: 7px;
+  padding: 5px;
+  color: #fff;
+  border: 2px solid rgb(97, 22, 0.3);
+  border-radius: 20px/50px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.button:hover {
+  background: rgba(240, 218, 218, 0.2);
+}
 
 .overlay {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            transition: opacity 500ms;
-            visibility: hidden;
-            opacity: 0;
-        }
-        .overlay:target {
-            visibility: visible;
-            opacity: 1;
-            z-index: 99;
-        }
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+  z-index: 99;
+}
 
 .popup {
-            margin: 70px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 5px;
-            width: 60%;
-            position: relative;
-            max-height: 100%;
-            overflow-y: auto;
-            transition: all 3s ease-in-out;
-          }
-          
-        .popup h2 {
-            margin-top: 0;
-            color: #333;
-            font-family: Tahoma, Arial, sans-serif;
-          }
-        .popup .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            transition: all 200ms;
-            font-size: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            color: #333;
-          }
-            .popup .close:hover {
-            color: rgba(235, 15, 15, 0.925);
-          }
-            .popup .content {
-                max-height: 30%;
-            }
-          
-          @media screen and (max-width: 700px){
-            .box{
-              width: 70%;
-            }
-            .popup{
-              width: 70%;
-            }
-          }
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 60%;
+  position: relative;
+  max-height: 100%;
+  overflow-y: auto;
+  transition: all 3s ease-in-out;
+}
 
- 
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: rgba(235, 15, 15, 0.925);
+}
+.popup .content {
+  max-height: 30%;
+}
+
+@media screen and (max-width: 700px) {
+  .box {
+    width: 70%;
+  }
+  .popup {
+    width: 70%;
+  }
+}
+
+/* Image Hover Shake Rulesets */
+img:hover {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
 
