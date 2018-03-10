@@ -26,6 +26,7 @@
   "homepage": "https://github.com/peterbarraud/rapo-browserify-budo#browserify-with-budo",
   "devDependencies": {
     "budo": "^10.0.4",
+    "css-declaration-sorter": "^3.0.1",
     "file-copy": "^1.0.0",
     "imagemin": "^5.3.1",
     "imagemin-gifsicle": "^5.2.0",
