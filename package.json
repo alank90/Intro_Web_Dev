@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "budo index.js --live --open",
     "build": "node ./scripts/build",
-    "testbuild": "budo -d ./build --open"
+    "testbuild": "budo -d ./build --open",
+    "css-clean": "npx postcss src\\css\\main.css -u autoprefixer --replace && npx postcss src\\css\\main.css -u css-declaration-sorter --replace --no-map"
   },
   "repository": {
     "type": "git",
@@ -34,7 +35,6 @@
     "imagemin-jpegtran": "^5.0.2",
     "imagemin-pngquant": "^5.0.1",
     "mkdirp": "^0.5.1",
-    "postcss-cli": "^5.0.0",
     "rimraf": "^2.6.2",
     "uglifycss": "0.0.27",
     "uglifyify": "^4.0.4"

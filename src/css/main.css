@@ -7,9 +7,9 @@ html {
 }
 
 body {
-    cursor: default;
+  cursor: default;
+
   font-size: 62.5%;
-  
 }
 
 h1 {
@@ -33,7 +33,7 @@ h2 {
   font-family: "Nanum Brush Script", cursive;
   font-size: 2rem;
   margin-bottom: -10px;
-          text-decoration-line: underline;
+  text-decoration-line: underline;
 }
 
 li {
@@ -44,11 +44,12 @@ li li {
 }
 
 a:link {
+  /* Underline Effect */
   color: rgba(15, 14, 14, 0.8);
+
   font-size: 1.3rem;
   position: relative;
   text-decoration: none;
-  /* Underline Effect */
 }
 
 a:link:after {
@@ -61,8 +62,8 @@ a:link:after {
   height: 2px;
   left: 0;
   position: absolute;
-          transform: scaleX(0);
-          transform-origin: bottom right;
+  transform: scaleX(0);
+  transform-origin: bottom right;
   transition: -webkit-transform 0.4s ease-out;
   transition: transform 0.4s ease-out;
   transition: transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
@@ -82,8 +83,8 @@ a:hover:after {
   /* Underline Effect */
   -webkit-transform: scaleX(1);
   -webkit-transform-origin: bottom left;
-          transform: scaleX(1);
-          transform-origin: bottom left;
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 a:active {
@@ -125,9 +126,9 @@ p {
   transition: all 0.3s ease-out;
   width: 40%;
 }
-.button:hover {
-  background: rgba(240, 218, 218, 0.2);
-}
+    .button:hover {
+      background: rgba(240, 218, 218, 0.2);
+    }
 
 .overlay {
   background: rgba(0, 0, 0, 0.7);
@@ -140,11 +141,11 @@ p {
   transition: opacity 500ms;
   visibility: hidden;
 }
-.overlay:target {
-  opacity: 1;
-  visibility: visible;
-  z-index: 99;
-}
+    .overlay:target {
+      opacity: 1;
+      visibility: visible;
+      z-index: 99;
+    }
 
 .popup {
   background: #fff;
@@ -173,12 +174,12 @@ p {
   top: 20px;
   transition: all 200ms;
 }
-.popup .close:hover {
-  color: rgba(235, 15, 15, 0.925);
-}
-.popup .content {
-  max-height: 30%;
-}
+    .popup .close:hover {
+      color: rgba(235, 15, 15, 0.925);
+    }
+    .popup .content {
+      max-height: 30%;
+    }
 
 @media screen and (max-width: 700px) {
   .box {
@@ -194,61 +195,63 @@ img:hover {
   -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000px;
+
   -webkit-transform: translate3d(0, 0, 0);
-          animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-          backface-visibility: hidden;
-          perspective: 1000px;
-          transform: translate3d(0, 0, 0);
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  backface-visibility: hidden;
+  perspective: 1000px;
+
+  transform: translate3d(0, 0, 0);
 }
 @-webkit-keyframes shake {
   10%,
   90% {
     -webkit-transform: translate3d(-1px, 0, 0);
-            transform: translate3d(-1px, 0, 0);
+    transform: translate3d(-1px, 0, 0);
   }
 
   20%,
   80% {
     -webkit-transform: translate3d(2px, 0, 0);
-            transform: translate3d(2px, 0, 0);
+    transform: translate3d(2px, 0, 0);
   }
 
   30%,
   50%,
   70% {
     -webkit-transform: translate3d(-4px, 0, 0);
-            transform: translate3d(-4px, 0, 0);
+    transform: translate3d(-4px, 0, 0);
   }
 
   40%,
   60% {
     -webkit-transform: translate3d(4px, 0, 0);
-            transform: translate3d(4px, 0, 0);
+    transform: translate3d(4px, 0, 0);
   }
 }
 @keyframes shake {
   10%,
   90% {
     -webkit-transform: translate3d(-1px, 0, 0);
-            transform: translate3d(-1px, 0, 0);
+    transform: translate3d(-1px, 0, 0);
   }
 
   20%,
   80% {
     -webkit-transform: translate3d(2px, 0, 0);
-            transform: translate3d(2px, 0, 0);
+    transform: translate3d(2px, 0, 0);
   }
 
   30%,
   50%,
   70% {
     -webkit-transform: translate3d(-4px, 0, 0);
-            transform: translate3d(-4px, 0, 0);
+    transform: translate3d(-4px, 0, 0);
   }
 
   40%,
   60% {
     -webkit-transform: translate3d(4px, 0, 0);
-            transform: translate3d(4px, 0, 0);
+    transform: translate3d(4px, 0, 0);
   }
 }
