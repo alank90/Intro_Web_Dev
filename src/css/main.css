@@ -38,9 +38,9 @@ h2 {
 li {
   font-size: 1.3rem;
 }
-li li {
-  font-size: 1rem;
-}
+    li li {
+      font-size: 1rem;
+    }
 
 a:link {
   /* Underline Effect */
