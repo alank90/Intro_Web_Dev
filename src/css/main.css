@@ -111,6 +111,11 @@ p {
   text-align: left;
 }
 
+ol li:hover {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
 /* Code for Modal Window Below Here */
 .button {
   border: 2px solid rgb(97, 22, 0.3);
