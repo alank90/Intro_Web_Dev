@@ -45,7 +45,6 @@ li li {
 a:link {
   /* Underline Effect */
   color: rgba(15, 14, 14, 0.8);
-
   font-size: 1.3rem;
   position: relative;
   text-decoration: none;
@@ -130,9 +129,9 @@ ol li:hover {
   transition: all 0.3s ease-out;
   width: 40%;
 }
-    .button:hover {
-      background: rgba(240, 218, 218, 0.2);
-    }
+.button:hover {
+  background: rgba(240, 218, 218, 0.2);
+}
 
 .overlay {
   background: rgba(0, 0, 0, 0.7);
@@ -145,11 +144,11 @@ ol li:hover {
   transition: opacity 500ms;
   visibility: hidden;
 }
-    .overlay:target {
-      opacity: 1;
-      visibility: visible;
-      z-index: 99;
-    }
+.overlay:target {
+  opacity: 1;
+  visibility: visible;
+  z-index: 99;
+}
 
 .popup {
   background: #fff;
@@ -178,12 +177,12 @@ ol li:hover {
   top: 20px;
   transition: all 200ms;
 }
-    .popup .close:hover {
-      color: rgba(235, 15, 15, 0.925);
-    }
-    .popup .content {
-      max-height: 30%;
-    }
+.popup .close:hover {
+  color: rgba(235, 15, 15, 0.925);
+}
+.popup .content {
+  max-height: 30%;
+}
 
 @media screen and (max-width: 700px) {
   .box {
