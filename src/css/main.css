@@ -53,7 +53,7 @@ a:link {
 a:link:after {
   -webkit-transform: scaleX(0);
   -webkit-transform-origin: bottom right;
-  background-color: #f5ececda;
+  background-color: #00008b;
   bottom: 0;
   /* Underline Effect */
   content: "";
@@ -69,7 +69,7 @@ a:link:after {
 }
 
 a:visited {
-  color: purple;
+  color: #37094bbe;
   font-style: italic;
 }
 
