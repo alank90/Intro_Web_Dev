@@ -1,3 +1,30 @@
+/* ============== Browser Reset ========= */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 10px browser default */
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* =========== End Reset ====================== */
+
+
 html {
   background-blend-mode: hard-light;
   background-color: whitesmoke;
@@ -14,38 +41,45 @@ body {
 h1 {
   cursor: default;
   font-family: "Fontdiner Swanky", cursive;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   text-align: center;
+  padding: 35px 0;
 }
 
-.container {
+.flex-container {
   align-items: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   font-size: 2.4rem;
+  justify-content: space-around;
 }
-
+    .flex-item {
+      width: 48vw;
+    }
+    
 h2 {
   -webkit-text-decoration-line: underline;
   flex-basis: 100%;
   font-family: "Nanum Brush Script", cursive;
-  font-size: 2rem;
+  font-size: 3.5rem;
   margin-bottom: -10px;
   text-decoration-line: underline;
+  padding: 30px 0;
+  font-weight: 700;
 }
 
 li {
-  font-size: 1.3rem;
+  font-size: 2.2rem;
 }
     li li {
-      font-size: 1rem;
+      font-size: 2rem;
     }
 
 a:link {
   /* Underline Effect */
   color: rgba(15, 14, 14, 0.8);
-  font-size: 1.3rem;
+  font-size: 2.2rem;
   position: relative;
   text-decoration: none;
 }
@@ -53,7 +87,7 @@ a:link {
 a:link:after {
   -webkit-transform: scaleX(0);
   -webkit-transform-origin: bottom right;
-  background-color: #00008b;
+  background-color: #ececf3;
   bottom: 0;
   /* Underline Effect */
   content: "";
@@ -110,7 +144,7 @@ p {
 }
 
 ol li:hover {
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   font-weight: 700;
 }
 
