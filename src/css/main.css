@@ -4,17 +4,29 @@ html {
   font-size: 62.5%; /* 10px browser default */
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -23,7 +35,6 @@ img {
   height: auto;
 }
 /* =========== End Reset ====================== */
-
 
 html {
   background-blend-mode: hard-light;
@@ -54,15 +65,15 @@ h1 {
   font-size: 2.4rem;
   justify-content: space-around;
 }
-    .flex-item {
-      width: 48vw;
-    }
-    
+.flex-item {
+  width: 48vw;
+}
+
 h2 {
   -webkit-text-decoration-line: underline;
   flex-basis: 100%;
   font-family: "Nanum Brush Script", cursive;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   margin-bottom: -10px;
   text-decoration-line: underline;
   padding: 30px 0;
@@ -72,9 +83,9 @@ h2 {
 li {
   font-size: 2.2rem;
 }
-    li li {
-      font-size: 2rem;
-    }
+li li {
+  font-size: 2rem;
+}
 
 a:link {
   /* Underline Effect */
@@ -148,7 +159,23 @@ ol li:hover {
   font-weight: 700;
 }
 
-/* Code for Modal Window Below Here */
+iframe {
+  margin-top: 20px;
+}
+
+.zoom {
+  transition: all 1.5s linear; /* Animation */
+  width: 440px;
+  height: 260px;
+  z-index: 99;
+}
+    .zoom:hover {
+      margin-left: 55%;
+      margin-top: -55%;
+      transform: scale(2.5); /* 250% zoom */
+    }
+
+/* =============  Code for Modal Window Below Here ================ */
 .button {
   border: 2px solid rgb(97, 22, 0.3);
   border-radius: 20px/50px;
