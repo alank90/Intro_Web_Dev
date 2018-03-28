@@ -94,13 +94,11 @@ require("rimraf")("./dist", function() {
             const regEx4 = /href\s*=\s*'\.\/src\//gi;
 
             let distIndexHtml = data
-              .replace(regEx1, 'src="/')
-              .replace(regEx2, "src='/")
-              .replace(regEx3, 'href="/')
-              .replace(regEx4, "href='/");
-            fs.writeFile("dist/index.html", distIndexHtml, "utf8", function(
-              err
-            ) {
+              .replace(regEx1, 'src="./')
+              .replace(regEx2, "src='./")
+              .replace(regEx3, 'href="./')
+              .replace(regEx4, "href='./");
+            fs.writeFile("dist/index.html", distIndexHtml, "utf8", function(err) {
               if (err) console.error(err);
             });
           });
