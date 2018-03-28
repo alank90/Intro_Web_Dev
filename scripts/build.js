@@ -21,56 +21,67 @@ require("rimraf")("./dist", function() {
 
       // Lets build the browserify bundle using the browserify api
       // First check if index.js exists
-      console.log("Checking for index.js");
-      fs.open("index.js", "r", (err, fd) => {
-        if (err) {
-          console.log("No index.js found. Skipped browserfying step");
-        } else {
-          console.log("bundle.js: build and uglify");
-          let b = require("browserify")();
-          b.add("src/js/main.js");
-          b.transform("uglifyify", { global: true });
-          let indexjs = fs.createWriteStream("dist/index.js");
-          // Bundle the files and their dependencies into a
-          // single javascript file.
-          b.bundle().pipe(indexjs);
-        }
-      });
+      const browserifyBuild = function() {
+        console.log("Checking for index.js");
+        const promise = new Promise(function(resolve, reject) {
+          fs.open("index.js", "r", (err, fd) => {
+            if (err) {
+              console.log("No index.js found. Skipped browserfying step");
+            } else {
+              console.log("bundle.js: build and uglify");
+              let b = require("browserify")();
+              b.add("src/js/main.js");
+              b.transform("uglifyify", { global: true });
+              let indexjs = fs.createWriteStream("dist/index.js");
+              // Bundle the files and their dependencies into a
+              // single javascript file.
+              b.bundle().pipe(indexjs);
+              resolve("Bundling Succesful!");
+            }
+          });
+        });
+        return promise;
+      };
 
       // Create a promise to compress images and then
       // do the rest of our I/O work with 'then'
-      const compressImages = new Promise(function(resolve, reject) {
-        // Compress images
-        fs.readdir("src/img", function(err, files) {
-          if (err) {
-            console.error(
-              `Alert! Check if the directory src/img exists. ${err}`
-            );
-          } else if (files.length === 0) {
-            console.log("images: No images found.");
-          } else {
-            mkdirp("./dist/img", function(err) {
-              if (err) {
-                console.error(err);
-              } else {
-                imagemin(["src/img/*.{jpg,png,gif}"], "dist/img", {
-                  plugins: [
-                    imageminJpegtran(),
-                    imageminPngquant({ quality: "65-80" }),
-                    imageminGifSicle({ optimizationLevel: 2 })
-                  ]
-                }).then(files => {
-                  console.log(files);
-                  console.log("Build Complete!!!");
-                });
-              }
-            });
-          }
+      const compressImages = function() {
+        const promise = new Promise(function(resolve, reject) {
+          // Compress images
+          fs.readdir("src/img", function(err, files) {
+            if (err) {
+              console.error(
+                `Alert! Check if the directory src/img exists. ${err}`
+              );
+            } else if (files.length === 0) {
+              resolve("images: No images found.");
+            } else {
+              mkdirp("./dist/img", function(err) {
+                if (err) {
+                  console.error(err);
+                } else {
+                  imagemin(["src/img/*.{jpg,png,gif}"], "dist/img", {
+                    plugins: [
+                      imageminJpegtran(),
+                      imageminPngquant({ quality: "65-80" }),
+                      imageminGifSicle({ optimizationLevel: 2 })
+                    ]
+                  }).then(files => {
+                    console.log(files);
+                    console.log("Build Complete!!!");
+                  });
+                }
+              });
+            }
+          });
+          resolve("images: build and compress");
         });
-        resolve("images: build and compress");
-      });
-      // Call promise
-      compressImages
+        return promise;
+      }; // End Compress Images Promise
+
+      // Call promise chain
+      browserifyBuild()
+        .then(compressImages)
         .then(function(result) {
           console.log(result);
           require("file-copy")("index.html", "dist/index.html");
@@ -98,7 +109,9 @@ require("rimraf")("./dist", function() {
               .replace(regEx2, "src='./")
               .replace(regEx3, 'href="./')
               .replace(regEx4, "href='./");
-            fs.writeFile("dist/index.html", distIndexHtml, "utf8", function(err) {
+            fs.writeFile("dist/index.html", distIndexHtml, "utf8", function(
+              err
+            ) {
               if (err) console.error(err);
             });
           });
