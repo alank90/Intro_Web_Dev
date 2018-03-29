@@ -26,7 +26,7 @@ require("rimraf")("./dist", function() {
         const promise = new Promise(function(resolve, reject) {
           fs.open("index.js", "r", (err, fd) => {
             if (err) {
-              console.log("No index.js found. Skipped browserfying step");
+              reject("No index.js found. Skipped browserfying step");
             } else {
               console.log("bundle.js: build and uglify");
               let b = require("browserify")();
@@ -39,26 +39,25 @@ require("rimraf")("./dist", function() {
               resolve("Bundling Succesful!");
             }
           });
-        });
-        return promise;
-      };
+        }); // End of Promise
 
-      // Create a promise to compress images and then
-      // do the rest of our I/O work with 'then'
-      const compressImages = function() {
+        return promise;
+      }; // End browserifyBuild
+
+      // Create another function w/promise to compress images
+      const compressImages = function(result) {
+        console.log(result);
+        // Compress images
         const promise = new Promise(function(resolve, reject) {
-          // Compress images
           fs.readdir("src/img", function(err, files) {
             if (err) {
-              console.error(
-                `Alert! Check if the directory src/img exists. ${err}`
-              );
+              reject(`Alert! Check if the directory src/img exists. ${err}`);
             } else if (files.length === 0) {
-              resolve("images: No images found.");
+              reject("images: No images found.");
             } else {
               mkdirp("./dist/img", function(err) {
                 if (err) {
-                  console.error(err);
+                  reject(err);
                 } else {
                   imagemin(["src/img/*.{jpg,png,gif}"], "dist/img", {
                     plugins: [
@@ -68,33 +67,32 @@ require("rimraf")("./dist", function() {
                     ]
                   }).then(files => {
                     console.log(files);
-                    console.log("Build Complete!!!");
+                    resolve("Images Compressed!!!");
                   });
                 }
               });
             }
           });
-          resolve("images: build and compress");
-        });
-        return promise;
-      }; // End Compress Images Promise
+        }); // end of promise
 
-      // Call promise chain
-      browserifyBuild()
-        .then(compressImages)
-        .then(function(result) {
-          console.log(result);
+        return promise;
+      }; // End compressImages Function
+
+      // And finish up miscellaneous I/O operations
+      const miscOperations = function(result) {
+        console.log(result);
+
+        const promise = new Promise(function(resolve, reject) {
           require("file-copy")("index.html", "dist/index.html");
           console.log("index.html: copy to dist/ folder");
-        })
-        .then(function() {
+
           // Lets update dist/index.html file src and href links to reflect new location
           console.log(
             "index.html: Redoing file links to reflect move to /dist folder."
           );
           fs.readFile("dist/index.html", "utf8", function(err, data) {
             if (err) {
-              console.error(err);
+              reject(err);
             }
 
             // check and replace both src= and href= links to reflect chenge to dist/ folder
@@ -112,12 +110,29 @@ require("rimraf")("./dist", function() {
             fs.writeFile("dist/index.html", distIndexHtml, "utf8", function(
               err
             ) {
-              if (err) console.error(err);
+              if (err) reject(err);
             });
           });
+          setTimeout(function() {
+            resolve("Build Process Completed...");
+          }, 2000);
+        }); //  End of promise.
 
-          console.log("Wait for build process to complete...");
-        }); // end promise
+        return promise;
+      }; // End miscOperations function
+
+      // Call promise chain
+      browserifyBuild()
+        .then(compressImages, compressImages) // Call compressImages for for either resolve or reject
+        .then(miscOperations)
+        .then(
+          function(result) {
+            console.log(result);
+          },
+          function(reason) {
+            console.err(reason);
+          }
+        );
     }
   });
 });
