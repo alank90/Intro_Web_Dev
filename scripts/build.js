@@ -36,7 +36,7 @@ require("rimraf")("./dist", function() {
               // Bundle the files and their dependencies into a
               // single javascript file.
               b.bundle().pipe(indexjs);
-              resolve("Bundling Succesful!");
+              resolve("Bundling Successful!");
             }
           });
         }); // End of Promise
@@ -115,7 +115,7 @@ require("rimraf")("./dist", function() {
           });
           setTimeout(function() {
             resolve("Build Process Completed...");
-          }, 2000);
+          }, 1500);
         }); //  End of promise.
 
         return promise;
