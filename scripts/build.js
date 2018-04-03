@@ -84,6 +84,7 @@ require("rimraf")("./dist", function() {
 
         const promise = new Promise(function(resolve, reject) {
           require("file-copy")("index.html", "dist/index.html");
+          fs.chmod("dist", 655);
           console.log("index.html: copy to dist/ folder");
 
           // Lets update dist/index.html file src and href links to reflect new location
