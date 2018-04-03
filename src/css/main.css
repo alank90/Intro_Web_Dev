@@ -156,7 +156,7 @@ p {
 }
 
 ol li:hover {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 
@@ -181,22 +181,23 @@ iframe {
 
 /* =============  Code for Modal Window Below Here ================ */
 .button {
-  border: 2px solid rgb(97, 22, 0.3);
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 20px/50px;
-  color: #fff;
+  color: rgba(0, 0, 0, .8);
   cursor: pointer;
   display: block;
-  font-size: 1rem;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: 2.4rem;
   margin: 7px;
+  max-width: 15vw;
   padding: 5px;
   text-align: center;
   text-decoration: none;
   transition: all 0.3s ease-out;
-  width: 40%;
 }
-.button:hover {
-  background: rgba(240, 218, 218, 0.2);
-}
+    .button:hover {
+      background: rgba(240, 218, 218, 0.2);
+    }
 
 .overlay {
   background: rgba(0, 0, 0, 0.7);
