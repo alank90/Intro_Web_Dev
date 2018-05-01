@@ -87,25 +87,27 @@ li {
       font-size: 2rem;
     }
 
-    .cool-link {
-      display: inline-block;
+  /*  CSS for Hover effect on links */
+.cool-link {
       color: #000;
+      display: inline-block;
       text-decoration: none;
   }
   
-  .cool-link::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 2px;
-      background: #000;
-      transition: width .3s;
-  }
-  
-  .cool-link:hover::after {
-      width: 100%;
-      transition: width .3s;
-  }
+    .cool-link::after {
+        background: #000;
+        content: '';
+        display: block;
+        height: 2px;
+        transition: width .3s;
+        width: 0;
+    }
+    
+    .cool-link:hover::after {
+        transition: width .3s;
+        width: 100%;
+    }
+ /*  End hover effects */
 
 a:visited {
   color: #2b282c5d;
@@ -167,27 +169,27 @@ iframe {
 
 /* =============  Code for Modal Window Below Here ================ */
 .button {
-  border: none;
 	background: #3a7999;
-	color: #f2f2f2;
-	padding: 10px;
-	font-size: 2rem;
+  border: none;
 	border-radius: 5px;
-	position: relative;
 	box-sizing: border-box;
-  transition: all 500ms ease; 
+	color: #f2f2f2; 
   display: inline-block;
+	font-size: 2rem;
+	padding: 10px;
+	position: relative;
+  transition: all 500ms ease;
 }
     .button:before {
-      content:'';
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      width: 0px;
-      height: 45px;
       background: rgba(255,255,255,0.3);
       border-radius: 5px;
+      content:'';
+      height: 45px;
+      left: 0px;
+      position: absolute;
+      top: 0px;
       transition: all 2s ease;
+      width: 0px;
     } 
     .button:hover:before {
       width: 100%;
