@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Markup Instructions</title>
+</head>
+
+<body>
+    <h2 id="Starting_point">Starting point</h2>
+
+    <p>To get this assessment started, you should go and grab the
+        <a href="https://github.com/mdn/learning-area/blob/master/html/introduction-to-html/marking-up-a-letter-start/letter-text.txt"
+            class="external" rel="noopener">raw text you need to mark up</a>, and the
+        <a href="https://github.com/mdn/learning-area/blob/master/html/introduction-to-html/marking-up-a-letter-start/css.txt" class="external"
+            rel="noopener">CSS you need to include</a> in your HTML. Create a new
+        <code>.html</code> file using your text editor to do your work in.</p>
+
+    <h2 id="Project_brief">Project brief</h2>
+
+    <p>For this project, your task is to mark up a letter that needs to be hosted on a university intranet. The letter is a
+        response from a research fellow to a prospective PhD student concerning their application to work at the university.</p>
+
+    <p>Block/structural semantics:</p>
+
+    <ul>
+        <li>You should structure the overall document with an appropriate structure including doctype, and
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html" target="_blank" title="The HTML &lt;html> element represents the root (top-level element) of an HTML document, so it is also referred to as the root element. All other elements must be descendants of this element.">
+                <code>&lt;html&gt;</code>
+            </a>,
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head" target="_blank" title="The HTML &lt;head> element provides general information (metadata) about the document, including its title and links to its scripts and style sheets.">
+                <code>&lt;head&gt;</code>
+            </a> and
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body" target="_blank" title="The HTML &lt;body> Element represents the content of an HTML document. There can be only one &lt;body> element in a document.">
+                <code>&lt;body&gt;</code>
+            </a> elements.</li>
+        <li>The letter in general should be marked up with a structure of paragraphs and headings, with the exception of the
+            below points. There is one top level heading (the "Re:" line) and three second level headings.</li>
+        <li>The semester start dates, study subjects and exotic dances should be marked up using an appropriate list type.</li>
+        <li>The two addresses can just be put inside paragraphs. The
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address" target="_blank" title="The HTML &lt;address> element indicates that the enclosed HTML provides contact information for a person or people, or for an organization.">
+                <code>&lt;address&gt;</code>
+            </a> element is not appropriate for them — think about why. In addition, each line of the addresses should sit
+            on a new line, but not be in a new paragraph.</li>
+    </ul>
+
+    <p>Inline semantics:</p>
+
+    <ul>
+        <li>The names of the sender and receiver (and "Tel" and "Email") should be marked up with strong importance.</li>
+        <li>The four dates in the document should be given appropriate elements containing machine-readable dates.</li>
+        <li>The first address and first date in the letter should be given a class attribute value of "sender-column"; the CSS
+            you'll add later will then cause these to be right aligned, as should be the case in a classic letter layout.</li>
+        <li>The five acronyms/abbreviations in the main text of the letter should be marked up to provide expansions of each
+            acronym/abbreviation.
+        </li>
+        <li>The six sub/superscripts should be marked up appropriately — in the chemical formulae, and the numbers 103 and 104
+            (they should be 10 to the power or 3 and 4, respectively).</li>
+        <li>The degree symbols and multiply symbols should be marked up using
+            <a href="https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references" class="external" rel="noopener">appropriate entity references</a>.</li>
+        <li>Try to mark up at least two appropriate words in the text with strong importance/emphasis.</li>
+        <li>There are two places where a hyperlink should be added; add appropriate links with titles. For the location that
+            the links point to, just use http://example.com.</li>
+        <li>The university motto quote and citation should be marked up with appropriate elements.</li>
+    </ul>
+
+    <p>The head of the document:</p>
+
+    <ul>
+        <li>The character set of the document should be specified as utf-8 using an appropriate meta tag.</li>
+        <li>The author of the letter should be specified in an appropriate meta tag.</li>
+        <li>The provided CSS should be included inside an appropriate tag.</li>
+    </ul>
+
+    <h2 id="Hints_and_tips">Hints and tips</h2>
+
+    <ul>
+        <li>Use the
+            <a href="https://validator.w3.org/" class="external" rel="noopener">W3C HTML validator</a> to validate your HTML; you'll get bonus points if it validates.</li>
+        <li>You don't need to know any CSS to do this assessment; you just need to put the provided CSS inside an HTML element.</li>
+    </ul>
+
+    <h2 id="Example">Example</h2>
+
+    <p>The following screenshot shows an example of what the letter might look like after being marked up.</p>
+
+    <p>
+        <img src="https://mdn.mozillademos.org/files/15811/Letter%20screengrab%202.png" alt="Example" style="border: 1px solid black; display: block; height: 1858px; margin: 0px auto; width: 931px;">
+    </p>
+</body>
+
+</html>
