@@ -31,7 +31,7 @@ require("rimraf")("./dist", function () {
             } else {
               console.log("bundle.js: build and uglify");
               let b = require("browserify")();
-              b.add("src/js/main.js");
+              b.add("index.js");
               b.transform("uglifyify", { global: true });
               let indexjs = fs.createWriteStream("dist/index.js");
               // Bundle the files and their dependencies into a
