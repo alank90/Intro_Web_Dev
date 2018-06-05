@@ -6,7 +6,7 @@ const imageminJpegtran = require("imagemin-jpegtran");
 const imageminPngquant = require("imagemin-pngquant");
 const imageminGifSicle = require("imagemin-gifsicle");
 
-// using rimraf to clean up any existing build
+// ============= Using rimraf to clean up any existing build ========= //
 require("rimraf")("./dist", function() {
   // and then rebuilding everything from scratch
   mkdirp("./dist/css", function(err) {
@@ -23,8 +23,9 @@ require("rimraf")("./dist", function() {
           console.log("Unable to Write main.css todist directory.");
         }
       });
+      // ============ End rimraf ====================== //
 
-      // Lets build the browserify bundle using the browserify api
+      // ===========  Build the browserify bundle using the browserify api ========== //
       // First check if index.js exists
       const browserifyBuild = function() {
         console.log("Checking for index.js");
@@ -81,10 +82,10 @@ require("rimraf")("./dist", function() {
         }); // end of promise
 
         return promise;
-      }; // End compressImages Function
+      }; // ========= End compressImages Function ==================== //
 
-      // And finish up miscellaneous I/O operations
-      const miscOperations = function(result) {
+      // ====== Read data from dist/index.html(getData) =============== //
+      const getData = function(result) {
         console.log(result);
 
         const promise = new Promise(function(resolve, reject) {
@@ -112,33 +113,31 @@ require("rimraf")("./dist", function() {
               .replace(regEx2, "src='./")
               .replace(regEx3, 'href="./')
               .replace(regEx4, "href='./");
-            fs.writeFile("dist/index.html", distIndexHtml, "utf8", function(
-              err
-            ) {
-              if (err) reject(err);
-            });
-          });
 
-          // Copy CNAME to /dist folder
-
-          fs.access("CNAME", fs.constants.R_OK | fs.constants.W_OK, err => {
-            if (err) {
-              console.log("No CNAME file present!");
-            } else {
-              console.log("CNAME file present. Copying to /dist.");
-              fc("CNAME", "dist/CNAME");
-            }
-          });
-
-          setTimeout(function() {
-            resolve("Build Process Completed...");
-          }, 1500);
+            resolve(distIndexHtml);
+          }); // end fs.readfile index.html
         }); //  End of promise.
 
         return promise;
-      }; // End miscOperations function
+      }; // ============ End getData function ================= //
 
-      // Function to modify background-url property value if present
+      // ===========  Write to dist/index.html (writeData) =================== //
+      const writeData = function(result) {
+        console.log(result);
+        
+        const promise = new Promise(function(resolve, reject) {
+          fs.writeFile("dist/index.html", result, "utf8", err => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve("Write to dist//index.html OK.");
+            }
+          });
+        }); // end fs.writefile promise
+        return promise;
+      }; // ============= End of writeData ======================= //
+
+      //  ============= Modify background-url property value if present =========== //
       const backImgUrl = result => {
         console.log(result);
         // Check dist\main.css and change the value to reflect move to dist directory
@@ -173,21 +172,49 @@ require("rimraf")("./dist", function() {
         }); // end promise
 
         return promise;
-      }; // End backImgUrl function
+      }; // ====== End backImgUrl function =================
 
-      // Call promise chain
-      browserifyBuild()
-      .then(compressImages, compressImages) // Call compressImages for either resolve or reject
-        .then(backImgUrl);
-        /* .then(miscOperations)
-        .then(
-          function (result) {
-            console.log(result);
-          },
-          function (reason) {
-            console.err(reason);
+      // === Misc Operations =========== //
+      const miscOperations = function(result) {
+        // Copy CNAME to /dist folder
+        fs.access("CNAME", fs.constants.R_OK | fs.constants.W_OK, err => {
+          if (err) {
+            console.log("No CNAME file present!");
+          } else {
+            console.log("CNAME file present. Copying to /dist.");
+            fc("CNAME", "dist/CNAME");
           }
-        ); */
+        });
+
+        setTimeout(function() {
+          resolve("Build Process Completed...");
+        }, 1500); // Copy CNAME to /dist folder
+        fs.access("CNAME", fs.constants.R_OK | fs.constants.W_OK, err => {
+          if (err) {
+            console.log("No CNAME file present!");
+          } else {
+            console.log("CNAME file present. Copying to /dist.");
+            fc("CNAME", "dist/CNAME");
+          }
+        });
+
+        setTimeout(function() {
+          resolve("Build Process Completed...");
+        }, 1500);
+      };
+      // ============= End Misc Operations =============== //
+
+      // ==================================================== //
+      // ========== Call promise chain ====================== //
+      // ==================================================== //
+      browserifyBuild()
+        .then(compressImages, compressImages) // Call compressImages for either resolve or reject
+        .then(backImgUrl)
+        .then(getData)
+        .then(writeData)
+        .then(result => {
+          console.log(result);
+        });
     } // mkdirp else end
   }); // mkdirp callback end
 }); // rimraf callback end
