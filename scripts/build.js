@@ -136,22 +136,25 @@ require("rimraf")("./dist", function() {
 
       // ===========  Write to dist/index.html (writeData) =================== //
       const writeData = function(result) {
-        console.log(result);
-        const promise = new Promise(function(resolve, reject) {
-          fs.writeFile("dist/index.html", result, "utf8", err => {
-            if (err) {
-              reject(err);
-            } else {
-              const stats = fs.statSync("dist/index.html");
-              const fileSize = stats.size;
-              console.log(` Here is size of writefile op: ${fileSize}`);
+        const stats = fs.statSync("dist/index.html");
+        const fileSize = stats.size;
+        console.log(`index.html filesize is ${fileSize}`);
+        if (fileSize === 0) {
+          console.log(` Here is size of writefile op: ${fileSize}`);
+          throw new error("Index.html file is empty!");
+        } else {
+          const promise = new Promise(function(resolve, reject) {
+            fs.writeFile("dist/index.html", result, "utf8", err => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve("Write to dist//index.html OK.");
+              }
+            });
+          }); // end fs.writefile promise
 
-              resolve("Write to dist//index.html OK.");
-            }
-          });
-        }); // end fs.writefile promise
-
-        return promise;
+          return promise;
+        }
       }; // ============= End of writeData ======================= //
 
       //  ============= Modify background-url property value if present =========== //
@@ -166,7 +169,7 @@ require("rimraf")("./dist", function() {
           // Grab contents of main.css and put results in callback 'data' value
           fs.readFile("dist/css/main.css", "utf8", function(err, data) {
             if (err) {
-              resolve(err);
+              reject(err);
             }
             // check and replace background-url property value in dist/main.css
             const regEx1 = /background-image\s*:\s*url\("\/src\//gi;
@@ -222,6 +225,9 @@ require("rimraf")("./dist", function() {
         .then(miscOperations)
         .then(result => {
           console.log(result);
+        })
+        .catch((err) => {
+          console.log(err);
         });
     } // mkdirp else end
   }); // mkdirp callback end
