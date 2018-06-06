@@ -84,14 +84,27 @@ require("rimraf")("./dist", function() {
         return promise;
       }; // ========= End compressImages Function ==================== //
 
+      // ============ Copy index.html to dist/index.html(copyIndexHtml) ============ //
+      const copyIndexHtml = function(result) {
+        console.log(result);
+
+        const promise = new Promise(function(resolve, reject) {
+          if (err) {
+            reject(err);
+          } else {
+            fc("index.html", "dist/index.html");
+            resolve("index.html: copy to dist/ folder");
+          }
+        }); // end promise
+
+        return promise;
+      };
+
       // ====== Read data from dist/index.html(getData) =============== //
       const getData = function(result) {
         console.log(result);
 
         const promise = new Promise(function(resolve, reject) {
-          fc("index.html", "dist/index.html");
-          console.log("index.html: copy to dist/ folder");
-
           // Lets update dist/index.html file src and href links to reflect new location
           console.log(
             "index.html: Redoing file links to reflect move to /dist folder."
@@ -124,16 +137,20 @@ require("rimraf")("./dist", function() {
       // ===========  Write to dist/index.html (writeData) =================== //
       const writeData = function(result) {
         console.log(result);
-        
         const promise = new Promise(function(resolve, reject) {
           fs.writeFile("dist/index.html", result, "utf8", err => {
             if (err) {
               reject(err);
             } else {
+              const stats = fs.statSync("dist/index.html");
+              const fileSize = stats.size;
+              console.log(` Here is size of writefile op: ${fileSize}`);
+
               resolve("Write to dist//index.html OK.");
             }
           });
         }); // end fs.writefile promise
+
         return promise;
       }; // ============= End of writeData ======================= //
 
@@ -163,7 +180,7 @@ require("rimraf")("./dist", function() {
               err
             ) {
               if (err) {
-                console.log(err);
+                console.log(`Error updating background image url ${err}`);
               } else {
                 resolve("Updated main.css!!!");
               }
@@ -187,20 +204,8 @@ require("rimraf")("./dist", function() {
         });
 
         setTimeout(function() {
-          resolve("Build Process Completed...");
+          console.log("Build Process Completed...");
         }, 1500); // Copy CNAME to /dist folder
-        fs.access("CNAME", fs.constants.R_OK | fs.constants.W_OK, err => {
-          if (err) {
-            console.log("No CNAME file present!");
-          } else {
-            console.log("CNAME file present. Copying to /dist.");
-            fc("CNAME", "dist/CNAME");
-          }
-        });
-
-        setTimeout(function() {
-          resolve("Build Process Completed...");
-        }, 1500);
       };
       // ============= End Misc Operations =============== //
 
@@ -210,8 +215,11 @@ require("rimraf")("./dist", function() {
       browserifyBuild()
         .then(compressImages, compressImages) // Call compressImages for either resolve or reject
         .then(backImgUrl)
+        .then(copyIndexHtml)
         .then(getData)
         .then(writeData)
+        .then(backImgUrl)
+        .then(miscOperations)
         .then(result => {
           console.log(result);
         });
