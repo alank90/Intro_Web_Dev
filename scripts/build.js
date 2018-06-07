@@ -89,12 +89,18 @@ require("rimraf")("./dist", function() {
         console.log(result);
 
         const promise = new Promise(function(resolve, reject) {
-          if (err) {
-            reject(err);
-          } else {
-            fc("index.html", "dist/index.html");
-            resolve("index.html: copy to dist/ folder");
-          }
+          fs.access(
+            "./index.html",
+            fs.constants.R_OK | fs.constants.W_OK,
+            err => {
+              if (err) {
+                console.log("No No index.html file present!");
+              } else {
+                fc("./index.html", "./dist/index.html");
+                resolve("Copied index.html to \dist directory!");
+              }
+            }
+          );
         }); // end promise
 
         return promise;
@@ -103,6 +109,14 @@ require("rimraf")("./dist", function() {
       // ====== Read data from dist/index.html(getData) =============== //
       const getData = function(result) {
         console.log(result);
+
+        const stats = fs.statSync("./dist/index.html");
+        const fileSize = stats.size;
+        console.log(`index.html filesize is ${fileSize}`);
+        if (fileSize === 0) {
+          console.log(` Here is size of writefile op: ${fileSize}`);
+          /* throw new error("Index.html file is empty!"); */
+        }
 
         const promise = new Promise(function(resolve, reject) {
           // Lets update dist/index.html file src and href links to reflect new location
@@ -136,25 +150,17 @@ require("rimraf")("./dist", function() {
 
       // ===========  Write to dist/index.html (writeData) =================== //
       const writeData = function(result) {
-        const stats = fs.statSync("dist/index.html");
-        const fileSize = stats.size;
-        console.log(`index.html filesize is ${fileSize}`);
-        if (fileSize === 0) {
-          console.log(` Here is size of writefile op: ${fileSize}`);
-          throw new error("Index.html file is empty!");
-        } else {
-          const promise = new Promise(function(resolve, reject) {
-            fs.writeFile("dist/index.html", result, "utf8", err => {
-              if (err) {
-                reject(err);
-              } else {
-                resolve("Write to dist//index.html OK.");
-              }
-            });
-          }); // end fs.writefile promise
+        const promise = new Promise(function(resolve, reject) {
+          fs.writeFile("dist/index.html", result, "utf8", err => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve("Write to dist//index.html OK.");
+            }
+          });
+        }); // end fs.writefile promise
 
-          return promise;
-        }
+        return promise;
       }; // ============= End of writeData ======================= //
 
       //  ============= Modify background-url property value if present =========== //
@@ -226,7 +232,7 @@ require("rimraf")("./dist", function() {
         .then(result => {
           console.log(result);
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     } // mkdirp else end
