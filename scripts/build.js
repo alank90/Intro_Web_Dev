@@ -97,7 +97,7 @@ require("rimraf")("./dist", function() {
                 console.log("No No index.html file present!");
               } else {
                 fc("./index.html", "./dist/index.html");
-                resolve("Copied index.html to \dist directory!");
+                resolve("Copied index.html to dist directory!");
               }
             }
           );
@@ -110,13 +110,10 @@ require("rimraf")("./dist", function() {
       const getData = function(result) {
         console.log(result);
 
-        const stats = fs.statSync("./dist/index.html");
-        const fileSize = stats.size;
-        console.log(`index.html filesize is ${fileSize}`);
-        if (fileSize === 0) {
-          console.log(` Here is size of writefile op: ${fileSize}`);
-          /* throw new error("Index.html file is empty!"); */
-        }
+        fs.stat("./dist/index.html", function(err, stats) {
+          console.log(stats);
+          console.log();
+        });
 
         const promise = new Promise(function(resolve, reject) {
           // Lets update dist/index.html file src and href links to reflect new location
