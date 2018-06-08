@@ -110,11 +110,6 @@ require("rimraf")("./dist", function() {
       const getData = function(result) {
         console.log(result);
 
-        fs.stat("./dist/index.html", function(err, stats) {
-          console.log(stats);
-          console.log();
-        });
-
         const promise = new Promise(function(resolve, reject) {
           // Lets update dist/index.html file src and href links to reflect new location
           console.log(
@@ -137,6 +132,20 @@ require("rimraf")("./dist", function() {
               .replace(regEx2, "src='./")
               .replace(regEx3, 'href="./')
               .replace(regEx4, "href='./");
+
+            fs.stat("./dist/index.html", function(err, stats) {
+              if (err) {
+                console.log(`Error: ${err}`);
+              } else if (stats.size === 0) {
+                console.log(`Error copying index.html!!!!!!`);
+              } else {
+                console.log(
+                  `Succesfully updated dist\index.html. File size is ${
+                    stats.size
+                  }`
+                );
+              }
+            });
 
             resolve(distIndexHtml);
           }); // end fs.readfile index.html
