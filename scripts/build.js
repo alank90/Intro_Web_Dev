@@ -253,7 +253,6 @@ require("rimraf")("./dist", function() {
       // ==================================================== //
       browserifyBuild()
         .then(compressImages, compressImages) // Call compressImages for either resolve or reject
-        .then(backImgUrl)
         .then(copyIndexHtml)
         .then(getData)
         .then(writeData)
