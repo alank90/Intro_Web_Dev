@@ -199,20 +199,25 @@ require("rimraf")("./dist", function() {
 
       // === Misc Operations =========== //
       const miscOperations = function(result) {
-        // Copy CNAME to /dist folder
-        fs.access("CNAME", fs.constants.R_OK | fs.constants.W_OK, err => {
-          if (err) {
-            console.log("No CNAME file present!");
-          } else {
-            console.log("CNAME file present. Copying to /dist.");
-            fc("CNAME", "dist/CNAME");
-          }
-        });
+        const promise = new Promise(function(resolve, reject) {
+          // Copy CNAME to /dist folder
+          fs.access("CNAME", fs.constants.R_OK | fs.constants.W_OK, err => {
+            if (err) {
+              reject("No CNAME file present!");
+            } else {
+              console.log("CNAME file present. Copying to /dist.");
+              fc("CNAME", "dist/CNAME");
+            }
+          });
 
-        setTimeout(function() {
-          console.log("Build Process Completed...");
-        }, 1500); // Copy CNAME to /dist folder
+          setTimeout(function() {
+            resolve("Build Process Completed...");
+          }, 1500); // Copy CNAME to /dist folder
+        }); // end promise
+
+        return promise;
       };
+
       // ============= End Misc Operations =============== //
 
       // ==================================================== //
