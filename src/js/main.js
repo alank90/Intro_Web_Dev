@@ -4,7 +4,7 @@ const passwd = function() {
   el.addEventListener("click", function() {
     const password = prompt("Enter the password to download the file:");
     if (password != null && password.toLowerCase() === "writecode") {
-      location.assign("answerKey.txt");
+      location.assign("./resources/answerKey.txt");
     } else {
       alert("incorrect password!! please try again");
       location.reload(); 

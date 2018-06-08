@@ -1,5 +1,6 @@
 const fs = require("fs");
 const fc = require("file-copy");
+const copydir = require('copy-dir');
 const mkdirp = require("mkdirp");
 const imagemin = require("imagemin");
 const imageminJpegtran = require("imagemin-jpegtran");
@@ -140,7 +141,7 @@ require("rimraf")("./dist", function() {
                 console.log(`Error copying index.html!!!!!!`);
               } else {
                 console.log(
-                  `Succesfully updated dist\index.html. File size is ${
+                  `Succesfully copied to dist\index.html. File size is ${
                     stats.size
                   }`
                 );
@@ -216,6 +217,23 @@ require("rimraf")("./dist", function() {
             } else {
               console.log("CNAME file present. Copying to /dist.");
               fc("CNAME", "dist/CNAME");
+            }
+          });
+
+
+           // Copy resources to /dist folder
+           fs.access("./resources", fs.constants.R_OK | fs.constants.W_OK, err => {
+            if (err) {
+              console.log("No resources directory present!");
+            } else {
+              console.log("resources directory present. Copying to /dist.");
+              copydir('resources', 'dist/resources', err => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log("Copied resources directory ok");
+                }
+              });
             }
           });
 
