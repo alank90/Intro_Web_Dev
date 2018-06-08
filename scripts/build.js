@@ -223,7 +223,7 @@ require("rimraf")("./dist", function() {
           // Copy resources to /dist folder
           fs.readdir("./resources", (err, files) => {
             if (err) {
-              console.log("No resources directory present!");
+              console.log("Error reading resources directory!");
             } else if (!files.length) {
               console.log("resources directory empty");
             } else {
