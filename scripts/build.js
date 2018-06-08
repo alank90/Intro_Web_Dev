@@ -1,6 +1,6 @@
 const fs = require("fs");
 const fc = require("file-copy");
-const copydir = require('copy-dir');
+const copydir = require("copy-dir");
 const mkdirp = require("mkdirp");
 const imagemin = require("imagemin");
 const imageminJpegtran = require("imagemin-jpegtran");
@@ -220,14 +220,15 @@ require("rimraf")("./dist", function() {
             }
           });
 
-
-           // Copy resources to /dist folder
-           fs.access("./resources", fs.constants.R_OK | fs.constants.W_OK, err => {
+          // Copy resources to /dist folder
+          fs.readdir("./resources", (err, files) => {
             if (err) {
               console.log("No resources directory present!");
+            } else if (!files.length) {
+              console.log("resources directory empty");
             } else {
               console.log("resources directory present. Copying to /dist.");
-              copydir('resources', 'dist/resources', err => {
+              copydir("resources", "dist/resources", err => {
                 if (err) {
                   console.log(err);
                 } else {
